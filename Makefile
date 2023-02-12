@@ -1,10 +1,16 @@
 
-CC = g++
+export CC = g++
+export RANLIB = ranlib
+export AR = ar
+
+export CFLAGS = -Wall
+export LDFLAGS
+
+all: library tests
 
 
+library:
+	$(MAKE) -C src
 
-all: ssh_session
-
-
-ssh_session: 
-	$(CC) -c src/ssh_session.cpp -o src/ssh_session.o
+tests:
+	$(MAKE) -C test
