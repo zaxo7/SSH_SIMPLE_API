@@ -4,7 +4,7 @@ all: clean connection_test runtests
 
 
 connection_test: 
-	$(CC) connection_test.cpp -o connection_test -L../lib -lsshSimpleAPI -lssh
+	$(CC) connection_test.cpp $(CFLAGS) -o connection_test $(LDFLAGS)
 
 
 clean:

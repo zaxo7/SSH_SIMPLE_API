@@ -50,7 +50,28 @@ public:
     */
     SSH_session();
 
+    /**
+     * @brief open the connection and authenticate with the server
+     * 
+     * @return true on success
+     * @return false on failure
+     */
     bool connect();
+
+    /**
+     * @brief disconnects from server
+     * 
+     */
+    void disconnect();
+
+    /**
+     * @brief quickly execute a command and get the result
+     * 
+     * @param command 
+     * @param bufferSize the size of the buffer for reading output
+     * @return string 
+     */
+    string exec(string command, unsigned int bufferSize = 1024);
 
     //---------- setters and getters
 

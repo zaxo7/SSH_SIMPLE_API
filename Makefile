@@ -4,7 +4,7 @@ export RANLIB = ranlib
 export AR = ar
 
 export CFLAGS = -Wall
-export LDFLAGS
+export LDFLAGS = -L../lib -lsshSimpleAPI -lssh
 
 all: library tests
 
