@@ -4,6 +4,7 @@
 #include <libssh/libssh.h>
 #include <iostream>
 #include <string>
+#include <string.h>
 
 using namespace std;
 
@@ -49,7 +50,11 @@ public:
      */
     string exec(string command, unsigned int bufferSize = 1024);
 
-
+    /**
+     * @brief Destroy the ssh channel object
+     * 
+     */
+    ~SSH_channel();
 
 };
 

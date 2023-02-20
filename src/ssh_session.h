@@ -27,6 +27,8 @@ private:
 
     ssh_session session;
 
+    bool isConnected;
+
 public:
 
     /**
@@ -81,9 +83,10 @@ public:
     /**
      * @brief Get a channel object
      * 
+     * @param openIt open the channel and return it
      * @return SSH_channel 
      */
-    SSH_channel get_channel();
+    SSH_channel get_channel(bool openIt = true);
 
     //---------- setters and getters
 

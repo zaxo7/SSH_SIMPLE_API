@@ -19,7 +19,7 @@ SSH_session()
     port = _port;
 }
 
-SSH_session::SSH_session()
+SSH_session::SSH_session() : isConnected(false)
 {
     session = ssh_new();
     if (session == NULL)
@@ -73,11 +73,15 @@ bool SSH_session::connect()
         return false;
     }
 
+    isConnected = true;
+
     return true;
 }
 
 void SSH_session::disconnect()
 {
+    isConnected = false;
+
     if(!session)
         return;
 
@@ -89,9 +93,20 @@ void SSH_session::disconnect()
 string SSH_session::exec(string command, unsigned int bufferSize)
 {
     if(!session)
+    {
+        cerr << "SSH_session::exec: NULL session" << endl;
         return "";
+    }
+        
+
+    if(!isConnected)
+    {
+        cerr << "SSH_session::exec :you must connect first" << endl;
+        return "";
+    }
 
     char *buffer = (char*)malloc(bufferSize);
+    memset(buffer, 0, bufferSize);
     // Open a channel
     ssh_channel channel = ssh_channel_new(session);
     if (channel == NULL) {
@@ -138,10 +153,18 @@ string SSH_session::exec(string command, unsigned int bufferSize)
         return "";
 }
 
-SSH_channel SSH_session::get_channel()
+SSH_channel SSH_session::get_channel(bool openIt)
 {
+    if(!isConnected)
+    {
+        cerr << "you must connect first, trying to connect ...";
+        connect();
+    }
     // Open a channel
     SSH_channel chan(session);
+
+    if(openIt)
+        chan.open();
 
     return chan;
 }
