@@ -1,4 +1,5 @@
 
+CFLAGS += -I../src
 
 all: clean connection_test runtests
 

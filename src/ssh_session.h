@@ -1,6 +1,11 @@
+#ifndef DEF_SSH_SESSION
+#define DEF_SSH_SESSION
+
 #include <libssh/libssh.h>
 #include <iostream>
 #include <string>
+
+#include "ssh_channel.h"
 
 using namespace std;
 
@@ -73,6 +78,13 @@ public:
      */
     string exec(string command, unsigned int bufferSize = 1024);
 
+    /**
+     * @brief Get a channel object
+     * 
+     * @return SSH_channel 
+     */
+    SSH_channel get_channel();
+
     //---------- setters and getters
 
     /**
@@ -120,3 +132,6 @@ public:
 
 
 };
+
+
+#endif

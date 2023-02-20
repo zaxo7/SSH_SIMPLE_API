@@ -138,6 +138,14 @@ string SSH_session::exec(string command, unsigned int bufferSize)
         return "";
 }
 
+SSH_channel SSH_session::get_channel()
+{
+    // Open a channel
+    SSH_channel chan(session);
+
+    return chan;
+}
+
 //---------- setters and getters
 
 void SSH_session::setUsername(string _username)

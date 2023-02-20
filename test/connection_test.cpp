@@ -1,4 +1,4 @@
-#include "../src/ssh_session.h"
+#include "ssh_session.h"
 
 using namespace std;
 
