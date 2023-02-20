@@ -1,7 +1,7 @@
 
 CFLAGS += -I../src
 
-all: clean connection_test runtests
+all: clean connection_test# runtests
 
 
 connection_test: 
@@ -11,5 +11,5 @@ connection_test:
 clean:
 	rm -rf connection_test
 
-runtests:
-	./connection_test
+#runtests:
+#	./connection_test

@@ -6,6 +6,7 @@
 #include <string>
 
 #include "ssh_channel.h"
+#include "session.h"
 
 using namespace std;
 
@@ -14,7 +15,7 @@ enum AuthType {
     PUBKEY
 };
 
-class SSH_session {
+class SSH_session : public SESSION {
 
 private:
     string ip;
